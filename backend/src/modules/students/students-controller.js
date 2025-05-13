@@ -21,7 +21,47 @@ const handleGetAllStudents = asyncHandler(async (req, res) => {
 });
 
 const handleAddStudent = asyncHandler(async (req, res) => {
-  await addNewStudent(req.body);
+  const {
+    name,
+    email,
+    systemAccess,
+    phone,
+    gender,
+    dob,
+    section,
+    roll,
+    fatherName,
+    fatherPhone,
+    motherName,
+    motherPhone,
+    guardianName,
+    guardianPhone,
+    relationOfGuardian,
+    currentAddress,
+    permanentAddress,
+    admissionDate,
+  } = req.body;
+  await addNewStudent({
+    name,
+    email,
+    systemAccess,
+    phone,
+    gender,
+    dob,
+    section,
+    roll,
+    fatherName,
+    fatherPhone,
+    motherName,
+    motherPhone,
+    guardianName,
+    guardianPhone,
+    relationOfGuardian,
+    currentAddress,
+    permanentAddress,
+    admissionDate,
+    class: req.body.class,
+  });
   res.status(201).send({ message: "Student Added Successfully!" });
 });
 
